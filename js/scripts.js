@@ -1,9 +1,3 @@
-  // var ones = ["I", "V", "X"];
-  // var tens = ["X", "L", "C"];
-  // var tens = ["C", "D", "M"];
-  // var thousands = ["M"];
-var input = $("#input").val();
-
 function romanNumbers(input) {
 
   var output = "";
@@ -13,43 +7,78 @@ function romanNumbers(input) {
       output += "M";
       input -= 1000;
     }
-
+  }
+  for (var i = input; i > 0; i-=900) {
+    if (input >=900) {
+      output += "CM";
+      input -= 900;
+    }
+  }
   for (var i = input; i > 0; i-=500) {
     if (input >=500) {
       output += "D";
       input -= 500;
     }
-
+  }
+  for (var i = input; i > 0; i-=400) {
+    if (input >=400) {
+      output += "CD";
+      input -= 400;
+    }
+  }
   for (var i = input; i > 0; i-=100) {
     if (input >=100) {
-      output += "D";
+      output += "C";
       input -= 100;
     }
-
+  }
+  for (var i = input; i > 0; i-=90) {
+    if (input >=90) {
+      output += "XC";
+      input -= 90;
+    }
+  }
   for (var i = input; i > 0; i-=50) {
     if (input >=50) {
-      output += "D";
+      output += "L";
       input -= 50;
     }
-
+  }
+  for (var i = input; i > 0; i-=40) {
+    if (input >=40) {
+      output += "XL";
+      input -= 40;
+    }
+  }
   for (var i = input; i > 0; i-=10) {
     if (input >=10) {
-      output += "D";
+      output += "X";
       input -= 10;
     }
-
-    for (var i = input; i > 0; i-=5) {
-      if (input >=5) {
-        output += "D";
-        input -= 5;
-      }
-
-    for (var i = input; i > 0; i-=1) {
-      if (input >=1) {
-        output += "D";
-        input -= 1;
-      }
-
+  }
+  for (var i = input; i > 0; i-=9) {
+    if (input >=9) {
+      output += "IX";
+      input -= 9;
+    }
+  }
+  for (var i = input; i > 0; i-=5) {
+    if (input >=5) {
+      output += "V";
+      input -= 5;
+    }
+  }
+  for (var i = input; i > 0; i-=4) {
+    if (input >=4) {
+      output += "IV";
+      input -= 4;
+    }
+  }
+  for (var i = input; i > 0; i-=1) {
+    if (input >=1) {
+      output += "I";
+      input -= 1;
+    }
   }
 
   return output;
@@ -57,9 +86,23 @@ function romanNumbers(input) {
 }
 
 console.log(
- romanNumbers(2000),
- romanNumbers(2000) === "MM"
+ romanNumbers(1999),
+ romanNumbers(1999) === "MCMXCIX"
 );
+
+$(document).ready(function(){
+  $("#formConverter").submit(function(event) {
+    event.preventDefault();
+    var input = parseInt($("#input").val());
+    var output = romanNumbers(input);
+    $(".outputClass").text(output);
+
+    $("#output").show();
+
+  });
+
+});
+
 
 
 
