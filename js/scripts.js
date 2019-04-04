@@ -1,10 +1,16 @@
 function romanNumbers(input) {
+
   var romanNumerals = ["I", "V", "X", "L", "C", "D", "M"];
-  return false;
-};
+  return true;
+
+  if (typeof input !== "number") {
+    return false;
+  }
+}
+
 
 console.log(
-  romanNumbers("1") === "I"
+  romanNumbers(1)
 );
 
 
